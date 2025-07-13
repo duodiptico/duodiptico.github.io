@@ -1,2 +1,4 @@
 User-agent: *
 Sitemap: https://duodiptico.github.io/sitemap.xml
+
+Disallow: /static/ 
