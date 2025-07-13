@@ -1,0 +1,551 @@
+/* Put this near the top of the file */
+*, *::before, *::after { box-sizing: border-box; }
+
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fff;
+    color: #222;
+    overflow-x: hidden; 
+  }
+  header{
+    background:#000;
+    color:#fff;
+    padding:2rem;
+    text-align:center;
+    position:relative;         
+  }
+  /* ---------- Header layout ---------- */
+  .header-inner{
+    max-width: 1200px;          /* keeps content centred on large screens */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  /* Optional: let the title/tagline collapse nicely on tiny widths */
+  .branding { text-align: left; }
+
+  /* ---------- Language switch ---------- */
+  .lang-switch{
+    position:absolute;          /* anchor in the corner */
+    top:0.75rem;
+    right:0.75rem;
+
+    /* pretty-button styling */
+    background:#fff;
+    color:#000;
+    padding:0.45rem 0.9rem;
+    border-radius:9999px;       /* pill shape */
+    font-size:0.875rem;
+    font-weight:600;
+    text-decoration:none;
+    box-shadow:0 2px 6px rgba(0,0,0,0.15);
+    transition:background .3s, color .3s, transform .2s;
+  }
+  .lang-switch:hover{
+    background:#ffcc00;         /* pick any brand accent */
+    transform:translateY(-2px);
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 3.0rem;
+  }
+  nav {
+    background: #111;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  section {
+    padding: 3rem 1rem;
+    max-width: 1000px;
+    margin: auto;
+  }
+  .intro, .media, .contacto, .bio, .multimedia, .galeria, .propuesta {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .intro-text {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .intro-text p {
+    margin-bottom: 3rem;
+    line-height: 1.6;
+  }
+
+  .intro h2, .media h2, .contacto h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .intro p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: auto;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .gallery img {
+    width: 100%;
+    border-radius: 12px;
+  }
+  iframe {
+    width: 100%;
+    height: 315px;
+    border: none;
+    border-radius: 12px;
+  }
+  footer {
+    background: #000;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .bio-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .profile-card {
+    flex: 1 1 300px;
+    max-width: 350px;
+    background: #f7f7f7;
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .profile-card img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+
+  .profile-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1.4rem;
+  }
+
+  .profile-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .video-slider-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 2rem auto;
+  }
+
+  .video-slider {
+    flex: 1;
+    position: relative;
+    height: auto;
+    aspect-ratio: 16/9;
+    max-width: 800px;
+  }
+
+  .video-slider iframe {
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    transition: left 0.8s ease;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  .slide.active {
+    left: 0;
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .slider-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+
+  .slider-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .slider-btn.prev {
+    margin-right: 1.5rem;
+  }
+
+  .slider-btn.next {
+    margin-left: 1.5rem;
+  }
+
+  .photo-slider-outer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 900px;
+    margin: 2rem auto;
+  }
+
+  .photo-slider-wrapper {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .photo-slider {
+    position: relative;
+    height: 450px;
+  }
+
+  .photo-slide {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    transition: left 0.8s ease;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  .photo-slide.active {
+    left: 0;
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .photo-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .photo-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+    position: relative;
+    margin: 1rem;
+  }
+
+  .photo-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .hero {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+  }
+
+  .hero h2 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero p {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .hero-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #ffffff;
+    color: #000;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .hero-btn:hover {
+    background-color: #000;
+    color: #fff;
+  }
+
+  .cards-propuesta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .cards-propuesta .card {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 1rem;
+    max-width: 280px;
+    text-align: center;
+  }
+
+  .cards-propuesta .card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .cards-propuesta .card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .cards-propuesta .card p {
+    font-size: 1rem;
+    color: #444;
+  }
+
+  .contacto {
+    padding: 3rem 1rem;
+    background-color: #f3f3f3;
+  }
+
+  .contacto-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .contacto-texto {
+    flex: 1;
+    min-width: 280px;
+  }
+
+  .contacto-texto ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .contacto-texto li {
+    margin: 0.5rem 0;
+  }
+
+  .contacto-foto {
+    flex: 1;
+    min-width: 280px;
+  }
+
+  .contacto-foto img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  /* Prevent hidden slides from widening the page */
+  .video-slider,
+  .photo-slider,
+  .video-slider-wrapper,
+  .photo-slider-outer {
+    overflow: hidden;   /* ✂️  no child may stick out horizontally */
+  }
+
+  /* -------------------------------------------------
+   Mobile-first tweaks: screens ≤ 767 px
+   ------------------------------------------------- */
+@media (max-width: 767px) {
+
+  /* Global sizing tweaks */
+  html { font-size: 90%; }
+  section { padding: 2rem 1rem; }
+
+  /* Header + nav */
+  header { padding: 1.25rem; }
+  header h1 { font-size: 2rem; }
+
+  header{ position:relative; }       /* create containing block */
+  .lang-switch{
+    position:absolute;               /* keep it visible even if flex wraps */
+    top:0.75rem;
+    right:0.75rem;
+  }
+
+  nav { flex-wrap: wrap; gap: 1rem; }
+
+  /* Hero */
+  .hero       { padding: 0;      overflow: hidden; }   /* no extra width */
+  .hero h1 { font-size: 2.4rem; }
+  .hero p  { font-size: 1.25rem; }
+  .hero-content { padding: 1.25rem; }                  /* keep inner breathing room */
+
+  /* Intro text – undo the 2 rem bug */
+  .intro-text p { max-width: none; }
+
+  /* Gallery & card grids  ➜ single column */
+  .gallery           { grid-template-columns: 1fr; }
+  .bio-cards,
+  .cards-propuesta   { flex-direction: column; gap: 1.5rem; }
+  .profile-card,
+  .cards-propuesta .card { max-width: 90%; margin: 0 auto; }
+
+  /* Sliders */
+  .video-slider-wrapper,
+  .photo-slider-outer { flex-direction: column; }
+  .slider-btn,
+  .photo-btn { font-size: 1.5rem; margin: .5rem; }
+
+  /* Contact section */
+  .contacto-wrapper { flex-direction: column; }
+  .contacto-texto   { text-align: center; }
+
+  /* ————————————————
+    Bigger YouTube videos
+    ———————————————— */
+  .video-slider         { max-width: 100%; }   /* let it grow to the full viewport width   */
+  .video-slider iframe,
+  .yt-player,
+  iframe[src*="youtube"]{
+    width: 100% !important;   /* override the 560 px attribute */
+    height: auto !important;  /* let CSS calculate height      */
+    aspect-ratio: 16 / 9;     /* keep the classic 16:9 shape   */
+    border-radius: 12px;      /* (optional) soften the corners */
+  }
+
+    /* ——— Galería: show the whole photo on ≤ 767 px ——— */
+  .photo-slider        { height: auto; }          /* drop the hard 450 px box */
+  .photo-slide img     { height: auto !important; max-height: 70vh;
+                        object-fit: contain !important; }
+  .photo-slider-wrapper { display:flex; align-items:center; }
+
+  /* 1️⃣  VIDEO  — keep a 16:9 box so the iframe has room */
+  .video-slider {
+    aspect-ratio: 16 / 9;   /* forces height = width / 1.777…  */
+    min-height: 220px;      /* safety net on tiny screens      */
+  }
+  .video-slider iframe {
+    height: 100% !important;/* fill the box instead of “auto”  */
+  }
+
+  /* 2️⃣  GALERÍA — give the photo slider its own aspect-ratio */
+  .photo-slider {
+    aspect-ratio: 3 / 2;    /* 1.5:1 works for most images     */
+    min-height: 240px;      /* prevents 0 px collapse          */
+  }
+  /* Prevent hidden slides from widening the page */
+  .video-slider,
+  .photo-slider,
+  .video-slider-wrapper,
+  .photo-slider-outer {
+    overflow: hidden;   /* ✂️  no child may stick out horizontally */
+  }
+
+
+  /* 1. Wrapper becomes a 2-column grid
+       row 1: the media spans both columns
+       row 2: Prev | Next                      */
+  .video-slider-wrapper,
+  .photo-slider-outer {
+    display: grid;                 /* overrides the old flex rule */
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "media media"
+      "prev  next";
+    gap: .75rem;
+    justify-items: center;         /* centres the buttons */
+  }
+
+  /* 2. Tell each element where to live */
+  .video-slider            { grid-area: media; }
+  .photo-slider-wrapper    { grid-area: media; }
+
+  .slider-btn.prev         { grid-area: prev; }
+  .slider-btn.next         { grid-area: next; }
+
+  .photo-slider-outer .prev-photo { grid-area: prev; }
+  .photo-slider-outer .next-photo { grid-area: next; }
+
+  /* 3. A little polish */
+  .slider-btn,
+  .photo-btn {
+    margin: 0 .25rem;      /* snug spacing */
+    justify-self: center;
+  }
+}
+
+/* Prevent hidden slides from widening the page */
+.video-slider,
+.photo-slider,
+.video-slider-wrapper,
+.photo-slider-outer {
+  overflow: hidden;   /* ✂️  no child may stick out horizontally */
+}
+
