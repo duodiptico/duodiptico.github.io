@@ -1,7 +1,7 @@
 title: "Homepage"
 description: "Dúo Díptico: música en vivo con voz y guitarra acústica, pop-rock y clásicos para bodas, eventos privados y conciertos íntimos en toda España."
-image: https://duodiptico.github.io/static/img/social_card_cropped.jpeg   # 1200 × 630 px ideal
-url: "https://duodiptico.github.io"   # sin slash final
+image: https://duodiptico.com/static/img/social_card_cropped.jpeg   # 1200 × 630 px ideal
+url: "https://duodiptico.com"   # sin slash final
 baseurl: "/"              # nombre del repo con slash inicial
 
 plugins:
