@@ -1,2 +1,4 @@
 User-agent: *
-Sitemap: https://duodiptico.github.io/sitemap.xml
+Sitemap: https://www.duodiptico.com/sitemap.xml
+
+Allow: /
